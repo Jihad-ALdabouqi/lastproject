@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+   <link rel="icon"  href="images/logo2.png" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<style>
+.logo {
+    width: 180px;
+    height: auto;
+    display: block;
+    margin-inline: auto;
+    padding: 0 !important;
+}
+.logo-wrapper {
+    padding: 0 !important;
+    margin-top: 5% ;
+    
+}
+
+.card-body {
+    padding-top: 10px !important; 
+}
+body{
+    background-color: #5D956B;
+    overflow: hidden;
+}
+
+</style>
+<body>
+<section class="vh-100"  style="background-color: #5D956B; ">
+  <div class="container py-5 h-100 pt-4 pb-5 "   >
+    <div class=" mt-0 row d-flex justify-content-center align-items-center h-100"  >
+      <div class="col col-xl-10 mt-0 "  >
+        <div class="card mt-0" style="border-radius: 1rem;  "  >
+          <div class="row g-0 ">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img src="Images/Learning languages-bro.png"
+                alt="login form" class="img-fluid mx-5 mt-5"  style="border-radius: 1rem 0 0 1rem; margin-top: 17% !important;"  />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center " style=" height: 670px  " >
+              <div class="card-body  p-lg-5 text-black" >
+
+                <form id="Signup-Form">
+
+                  <!--logo is here-->
+                 <div class="text-center logo-wrapper ">
+                 <img src="Images/logo.png" class="logo" alt="logo">
+                 </div>
+
+                  <h5 class="fw-normal mb-5  " style="letter-spacing: 1px; text-align: center; font-size: 30px; font-family:Arial, Helvetica, sans-serif " >Create your account</h5>
+
+                  <div class="form-outline mx-4  ">
+
+                    <div  style="display: flex;  "> <!---email & username-->
+                      <div data-mdb-input-init class="form-outline mb-0  ">
+                    <input type="text" name="username" id="form2Example17" class="form-control form-control-lg ms-5" style="border-radius: 10px;  width: 70%;" placeholder="Username" />
+                    <label class="form-label" for="form2Example17"></label>
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-0">
+                    <input type="email" name="email" id="form2Example27" class="form-control form-control-lg ms-0 " style="border-radius: 10px; width: 78%;" placeholder="Email"  />
+                    <label class="form-label" for="form2Example27"></label>
+                  </div>
+                     </div>
+
+                        <div data-mdb-input-init class="form-outline mb-0 ">
+                    <input type="tel" name="phone" id="form2Example17" class="form-control form-control-lg mx-5" style="border-radius: 10px;  width: 80%;" placeholder="Phone Number" />
+                    <label class="form-label" for="form2Example17"></label>
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-0">
+                    <input type="date" name="dateOfBirth" id="form2Example27" class=" mt-0 form-control form-control-lg mx-5 " style="border-radius: 10px; width: 80%; "  />
+                    <label class="form-label" for="form2Example27"></label>
+                  </div>
+                  <div data-mdb-input-init class="form-outline mb-0 ">
+                    <input type="password" name="password" id="form2Example17" class="form-control form-control-lg mx-5" style="border-radius: 10px;  width: 80%;" placeholder="Password" />
+                    <label class="form-label" for="form2Example17"></label>
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-0">
+                    <input type="password" name="confirmPassword" id="form2Example27" class=" mt-0 form-control form-control-lg mx-5 " style="border-radius: 10px; width: 80%;" placeholder="Password Confirmation"  />
+                    <label class="form-label" for="form2Example27"></label>
+                  </div>
+
+                  <div class="pt-0 mb-0">
+                    <button data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-lg btn-block mx-5" type="submit" style=" width: 80%;" >Sign Up</button>
+                  </div>
+
+                 </div>
+                  <p class="mb-0 mt-2 pb-lg-2" style="color: #000; margin-left: 13.8%;">Already have an account? <a href="Login.html"
+                      style="color:#474646;">Register here</a></p>
+            
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="Signup.js"></script>
+</body>
+</html>

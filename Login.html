@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+   <link rel="icon"  href="logo2.png" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<style>
+.logo {
+    width: 180px;
+    height: auto;
+    display: block;
+    margin-inline: auto;
+    padding: 0 !important;
+}
+.logo-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.card-body {
+    padding-top: 10px !important; 
+}
+
+</style>
+<body>
+<section class="vh-100"  style="background-color: #5D956B; ">
+  <div class="container py-5 h-100 pt-5 pb-5 "   >
+    <div class=" mt-0 row d-flex justify-content-center align-items-center h-100"  >
+      <div class="col col-xl-10 mt-0 "  >
+        <div class="card mt-0" style="border-radius: 1rem;  "  >
+          <div class="row g-0 ">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img src="Images/Learning languages-bro.png"
+                alt="login form" class="img-fluid mx-5 mt-5" style="border-radius: 1rem 0 0 1rem;"  />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center " style=" height: 600px  " >
+              <div class="card-body  p-lg-5 text-black" >
+
+                <form id="loginform">
+
+                  <!--logo is here-->
+                 <div class="text-center logo-wrapper mt-0">
+                 <img src="Images/logo.png" class="logo" alt="logo">
+                 </div>
+
+                  <h5 class="fw-normal mb-4 pb-3  " style="letter-spacing: 1px; text-align: center; font-size: 30px; font-family:Arial, Helvetica, sans-serif " >Sign into your account</h5>
+
+                  <div class="form-outline mx-4 my-4">
+                  <div data-mdb-input-init class="form-outline mb-4 ">
+                    <input type="email" id="username" class="form-control form-control-lg mx-5" style="border-radius: 10px;  width: 80%;" placeholder="Email" />
+                    <label class="form-label" for="form2Example17"></label>
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-3">
+                    <input type="password" id="password" class=" mt-0 form-control form-control-lg mx-5 " style="border-radius: 10px; width: 80%;" placeholder="Password"  />
+                    <label class="form-label" for="form2Example27"></label>
+                  </div>
+
+                  <!-- Add this line (no style change — you can style it later) -->
+                  <div id="msg" class="text-center my-2"></div>
+
+                  <div class="pt-1 mb-0">
+                    <button data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-lg btn-block mx-5" type="submit" style=" width: 80%;" >Login</button>
+                  </div>
+
+                 </div>
+                  <p class="mb-0 mt-4 pb-lg-2" style="color: #000; margin-left: 13.8%;">Don't have an account? <a href="signup.html"
+                      style="color:#474646;">Register here</a></p>
+            
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="login.js"></script>
+</body>
