@@ -60,3 +60,4 @@ document.addEventListener('DOMContentLoaded', function() {
         tbody.insertAdjacentHTML('beforeend', row);
     });
 });
+
