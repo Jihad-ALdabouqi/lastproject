@@ -160,13 +160,11 @@
             </a>
         </li>
 
-        <!-- ✅ ADDED: Logout section under Settings (as requested) -->
+        <!--  ADDED: Logout section under Settings (as requested) -->
         <li class="nav-item mt-4">
-            <a class="nav-link text-danger" href="Login.html">
+            <a class="nav-link text-danger" href="Home.html">
                 <i class="fas fa-fw fa-sign-out-alt" style="margin-top: 55px;  color: white; font-weight: bold;"></i>
                 <span style="margin-top: 55px; color: white; font-weight: bold;">Logout</span>
-                
-
             </a>
         </li>
     </ul>
@@ -223,78 +221,84 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-// ✅ my_results.js embedded (beginner-friendly)
-document.addEventListener("DOMContentLoaded", function () {
-    // 🔑 Get logged-in user
-    const username = localStorage.getItem("loggedInUser") || sessionStorage.getItem("loggedInUser");
-    
-    const tbody = document.getElementById("resultsBody");
-    
+document.addEventListener('DOMContentLoaded', function() {
+    const username = localStorage.getItem('loggedInUser') || sessionStorage.getItem('loggedInUser');
+    const tbody = document.getElementById('resultsBody');
+
     if (!username) {
         tbody.innerHTML = `
             <tr>
-                <td colspan="6" class="text-center py-4 text-danger">
-                    <i class="fas fa-exclamation-triangle me-2"></i>
-                    You are not logged in. Please log in to view results.
+                <td colspan="6" class="text-center text-muted py-4">
+                    <i class="fas fa-user-times me-2"></i>
+                    You are not logged in. Please <a href="Login.html">sign in</a> to view your results.
                 </td>
             </tr>
         `;
         return;
     }
 
-    // 🔍 Get user's quiz history: quizHistory_<username>
     const userKey = `quizHistory_${username}`;
-    const history = JSON.parse(localStorage.getItem(userKey) || "[]");
+    const history = JSON.parse(localStorage.getItem(userKey) || '[]');
 
-    // 🧾 Build table rows
     if (history.length === 0) {
         tbody.innerHTML = `
             <tr>
-                <td colspan="6" class="text-center py-4 text-muted">
-                    <i class="fas fa-clipboard-list me-2"></i>
-                    No quizzes taken yet.<br>
-                    <a href="user.html" class="text-primary mt-2 d-inline-block">← Go take a quiz!</a>
+                <td colspan="6" class="text-center text-muted py-4">
+                    <i class="fas fa-file-alt me-2"></i>
+                    No quiz results yet.
                 </td>
             </tr>
         `;
         return;
     }
 
-    // 📋 Generate rows
-    let rows = "";
-    history.forEach((quiz, index) => {
-        // Capitalize language: "arabic" → "Arabic"
-        const quizName = quiz.language.charAt(0).toUpperCase() + quiz.language.slice(1) + " Quiz";
-        
-        const scorePercent = Math.round((quiz.score / quiz.total) * 100);
-        const status = scorePercent >= 50 ? "Passed" : "Failed";
-        const statusClass = scorePercent >= 50 ? "score-pass" : "score-fail";
-        const statusIcon = scorePercent >= 50 ? "✅" : "❌";
+    tbody.innerHTML = ''; // تنظيف الجدول قبل الإضافة
 
-        rows += `
-            <tr>
-                <td>${index + 1}</td>
-                <td>${quizName}</td>
-                <td>${quiz.date}</td>
-                <td>
-                    <strong>${quiz.score}/${quiz.total}</strong> 
-                    <small>(${scorePercent}%)</small>
-                </td>
-                <td class="${statusClass}">${statusIcon} ${status}</td>
-                <td>
-                    <button class="btn btn-sm btn-outline-primary" onclick="alert('Review feature coming soon!')">
-                        <i class="fas fa-eye"></i>
-                    </button>
-                </td>
-            </tr>
+    history.reverse().forEach((item, revIndex) => {
+        const originalIndex = history.length - 1 - revIndex;
+        const percent = Math.round((item.score / item.total) * 100);
+        const isPass = percent >= 50;
+        const statusText = isPass ? 'Passed' : 'Failed';
+        const langName = item.language.charAt(0).toUpperCase() + item.language.slice(1);
+        const quizName = `${langName}: General MCQ Test`;
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${originalIndex + 1}</td>
+            <td>${quizName}</td>
+            <td>${item.date || '—'}</td>
+            <td class="${isPass ? 'score-pass' : 'score-fail'}">${percent}%</td>
+            <td class="${isPass ? 'text-success fw-bold' : 'text-danger fw-bold'}">${statusText}</td>
+            <td>
+                <button class="btn btn-sm btn-outline-info view-btn">
+                    <i class="fas fa-eye"></i> View
+                </button>
+            </td>
         `;
-    });
 
-    tbody.innerHTML = rows;
+        // حدث SweetAlert عند الضغط على زر العرض
+        row.querySelector('.view-btn').addEventListener('click', () => {
+            Swal.fire({
+                title: `<strong>${quizName}</strong>`,
+                html: `
+                    <p>Score: <strong>${item.score}/${item.total}</strong></p>
+                    <p>Percentage: <strong>${percent}%</strong></p>
+                    <p>Status: <strong>${statusText}</strong></p>
+                    <p>Date Taken: <strong>${item.date || '—'}</strong></p>
+                `,
+                icon: isPass ? 'success' : 'error',
+                confirmButtonText: 'Close'
+            });
+        });
+
+        tbody.appendChild(row);
+    });
 });
 </script>
+
 
 </body>
 </html>
