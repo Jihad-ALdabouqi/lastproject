@@ -61,17 +61,30 @@
             min-height: 100vh;
             width: calc(100% - 15rem);
         }
-        .table th, .table td {
-            vertical-align: middle;
+
+        /* =============== ✅ توزيع متساوي للأعمدة =============== */
+        #usersTable {
+            width: 100%;
+            table-layout: fixed;
         }
+        #usersTable th,
+        #usersTable td {
+            vertical-align: middle;
+            padding: 1rem 0.75rem;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 25%;
+        }
+
         .btn-edit {
             background-color: #0dcaf0;
             color: white;
             border: none;
         }
         .btn-edit:hover {
-            background-color: #0dcaf0;
-            opacity: 0.9;
+            background-color: #0bbfcf;
         }
         .btn-delete {
             background-color: #dc3545;
@@ -79,15 +92,7 @@
             border: none;
         }
         .btn-delete:hover {
-            background-color: #dc3545;
-            opacity: 0.9;
-        }
-        .badge-active {
-            background-color: #28a745;
-        }
-        .badge-pending {
-            background-color: #ffc107;
-            color: #212529;
+            background-color: #c82333;
         }
     </style>
 </head>
@@ -132,7 +137,6 @@
         <div id="content-wrapper">
             <h1 class="h3 mb-4">Manage Users</h1>
 
-            <!-- ⭐ رسالة الخطأ/النجاح هنا ⭐ -->
             <div id="messageBox" class="alert d-none mx-3"></div>
 
             <div class="card">
@@ -144,8 +148,6 @@
                                     <th>#ID</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Status</th>
-                                    <th>Forms Created</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -177,13 +179,6 @@
                         <div class="mb-3">
                             <label class="form-label">Email</label>
                             <input type="email" class="form-control" id="editEmail" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Status</label>
-                            <select class="form-select" id="editStatus">
-                                <option value="active">Active</option>
-                                <option value="pending">Pending</option>
-                            </select>
                         </div>
                     </form>
                 </div>
